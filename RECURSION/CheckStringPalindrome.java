@@ -1,8 +1,8 @@
 public class CheckStringPalindrome {
     public static void main(String[] args) {
-        String s = "A man, a plan, a canal: Panama";
+        String s = "madam";
 
-        boolean ans = reverse(s, 0, s.length() - 1);
+        boolean ans = reverse(0,s);
 
         if (ans)
             System.out.println("Palindrome");
@@ -10,21 +10,15 @@ public class CheckStringPalindrome {
             System.out.println("Not Palindrome");
     }
 
-    static boolean reverse(String s, int left, int right) {
-        if (left >= right)
-            return true;
+    static boolean reverse(int i, String s) {
+        // Base Condition: If i exceeds half of the string, all the elements have been compared
+        // and the string is a palindrome, return true.
+        if (i >= s.length() / 2) return true;
 
-        if (!Character.isLetterOrDigit(s.charAt(left)))
-            return reverse(s, left + 1, right);
+        // If the start and end characters are not equal, it's not a palindrome.
+        if (s.charAt(i) != s.charAt(s.length() - i - 1)) return false;
 
-        if (!Character.isLetterOrDigit(s.charAt(right)))
-            return reverse(s, left, right - 1);
-
-        if (Character.toLowerCase(s.charAt(left)) !=
-            Character.toLowerCase(s.charAt(right))) {
-            return false;
-        }
-
-        return reverse(s, left + 1, right - 1);
+        // If both characters are the same, increment i and check start+1 and end-1.
+        return reverse(i + 1, s);
     }
 }
