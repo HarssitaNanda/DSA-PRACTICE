@@ -1,13 +1,13 @@
 public class SumOfNNumbers {
     public static void main(String[] args) {
-        int n=3;
+        int n=5;
         
-        System.out.println(sum(n,0));
+        System.out.println(sum(n));
     }
-    static int sum(int n,int sum){
-        if(n==0) return sum;
+    static int sum(int n){
+        if(n==0) return 0;
         // sum+=n;
-        return sum(n-1,sum+n);
+        return n+sum(n-1);
         
     }
 }
