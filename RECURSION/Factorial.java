@@ -1,13 +1,13 @@
 class Factorial{
     public static void main(String[] args) {
-        int n=4;
+        int n=6;
         int prod=1;
-        System.out.println(fact(n,prod));
+        System.out.println(fact(n));
     }
-    static int fact(int n,int prod){
-        prod*=n;
-        if(n>1)
-        return fact(n-1,prod);
-        return prod;
+    static int fact(int n){
+        
+        if(n<1) return 1;
+        return n*fact(n-1);
+        
     }
 }
