@@ -189,3 +189,77 @@ Every recursive call **adds one element**, so every return must **remove that sa
 Without looking it up, can you explain why the base condition must be `i == arr.length` instead of `i == arr.length - 1`? Thinking through what happens to the last element will help you understand recursion more deeply.
 
  */
+
+
+
+
+//NOTES ABOUT TIME AND SPACE COMPLEXITY
+
+/*
+You can add the following explanation to your GitHub notes.
+
+---
+
+## Time Complexity Analysis
+
+At each index of the array, the algorithm makes **two recursive choices**:
+
+1. Include the current element in the subsequence.
+2. Exclude the current element from the subsequence.
+
+Since every element has two possible choices, the recursion forms a **binary recursion tree**.
+
+For an array of size **n**, the total number of subsequences generated is:
+
+[
+2^n
+]
+
+because each of the **n** elements can either be included or excluded independently.
+
+Although the recursion itself visits **O(2ⁿ)** nodes, the algorithm prints every subsequence. A single subsequence can contain at most **n** elements, so printing one subsequence takes **O(n)** time in the worst case.
+
+Therefore, the overall time complexity is:
+
+[
+\boxed{O(n \times 2^n)}
+]
+
+where:
+
+* **2ⁿ** is the number of subsequences generated.
+* **n** is the maximum time required to print a single subsequence.
+
+---
+
+## Space Complexity Analysis
+
+The algorithm uses recursion and backtracking.
+
+* The maximum depth of the recursion stack is equal to the number of elements in the array, i.e., **n**.
+* The temporary `ArrayList` used to store the current subsequence can also hold at most **n** elements.
+
+Hence, the auxiliary space complexity is:
+
+[
+\boxed{O(n)}
+]
+
+> **Note:** The space required to store or print all subsequences is not included in the auxiliary space complexity. If the output space is considered, it becomes **O(n × 2ⁿ)** since there are **2ⁿ** subsequences, each of length up to **n**.
+
+---
+
+## Summary
+
+| Complexity                 | Value         |
+| -------------------------- | ------------- |
+| Time Complexity            | **O(n × 2ⁿ)** |
+| Auxiliary Space Complexity | **O(n)**      |
+| Output Space (if counted)  | **O(n × 2ⁿ)** |
+
+### Key Intuition
+
+* Every element has **2 choices**: **Take** or **Not Take**.
+* Therefore, the recursion generates **2ⁿ** possible subsequences.
+* Since each generated subsequence may contain up to **n** elements, printing all of them results in an overall time complexity of **O(n × 2ⁿ)**.
+ */
