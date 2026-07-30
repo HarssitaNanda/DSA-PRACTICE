@@ -10,14 +10,13 @@ public class Fibonacci {
     }
     static int fib(int n,int[] dp) {
         //Base condition
-       if (n <= 1)
-        return n;
-        //Memoization
-       if(dp[n]!=-1)
-        return dp[n];
-    else{
-        dp[n]=fib(n-1,dp)+fib(n-2, dp);
-    }
+      dp[0]=0;
+      dp[1]=1;
+        //Tabulation
+       for(int i=2;i<n;i++){
+        dp[i]=dp[i-1]+dp[i-2];
+       }
+    
 
     return dp[n];
     }
