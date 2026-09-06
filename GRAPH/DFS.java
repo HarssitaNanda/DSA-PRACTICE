@@ -30,15 +30,5 @@ class DFS{
     }
 
 
-/*
-Replace indexed for loops on neighbors with a clean enhanced for loop:
-
-Java
-for (int neighbor : graph.get(node)) {
-    if (visited[neighbor] != 1) {
-        que.add(neighbor);
-        visited[neighbor] = 1;
-    }
-}
-Using a boolean[] instead of an int[] for visited is idiomatic Java and saves memory. */
+/*Using a boolean[] instead of an int[] for visited is idiomatic Java and saves memory. */
 
