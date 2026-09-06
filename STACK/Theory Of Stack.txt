@@ -1,0 +1,251 @@
+### 1. What is a Stack?
+
+* A **Stack is a linear data structure** that follows the **LIFO (Last In, First Out)** principle.
+* The element that is **inserted last is removed first**.
+* In a stack, insertion and deletion are performed from only one end, called the **top**.
+* The main operations are:
+
+  * **Push** → insert an element
+  * **Pop** → remove the top element
+  * **Peek/Top** → access the top element without removing it
+  * **isEmpty** → check whether the stack is empty
+
+**Interview definition:**
+
+> "A stack is a linear data structure that follows the LIFO principle, where insertion and deletion happen only from the top. Its primary operations are push, pop, and peek, which generally take O(1) time."
+
+---
+
+## 2. Where should a Stack be used?
+
+Use a stack when the problem has a **"last thing added should be processed first"** requirement.
+
+### Common applications:
+
+1. **Function calls / Recursion**
+
+   * Function calls are stored in the **call stack**.
+   * The most recently called function finishes first.
+
+2. **Undo/Redo**
+
+   * The most recent action should be undone first.
+   * Example: `Type A → Type B → Type C`
+   * Undo → removes `C` first.
+
+3. **Parentheses matching**
+
+   * Used to check expressions like:
+
+   ```text
+   ({[]})
+   ```
+
+   * The most recently opened bracket must be closed first.
+
+4. **DFS (Depth First Search)**
+
+   * A stack can be used to implement iterative DFS.
+   * We explore the most recently discovered node first.
+
+5. **Expression evaluation**
+
+   * Used for:
+
+     * Infix → Postfix
+     * Postfix evaluation
+     * Prefix evaluation
+
+6. **Backtracking**
+
+   * Useful when we need to return to the **most recent previous state**.
+   * Examples:
+
+     * Maze solving
+     * Browser history
+     * Some recursion/backtracking problems
+
+7. **Monotonic Stack problems**
+
+   * Very important in coding interviews.
+   * Examples:
+
+     * Next Greater Element
+     * Next Smaller Element
+     * Daily Temperatures
+     * Largest Rectangle in Histogram
+
+---
+
+## 3. Why is a Stack used?
+
+The main reason is **LIFO behavior**.
+
+Suppose:
+
+```text
+A → B → C
+```
+
+If we need:
+
+```text
+C → B → A
+```
+
+a stack naturally provides this behavior.
+
+### Advantages
+
+* **O(1) insertion**
+
+  * `push()` is generally O(1).
+
+* **O(1) deletion**
+
+  * `pop()` is generally O(1).
+
+* **O(1) access to the top**
+
+  * `peek()` is generally O(1).
+
+* **Simple implementation**
+
+  * Can be implemented using an array or linked list.
+
+* **Useful for temporary state**
+
+  * Particularly useful in recursion, DFS, and backtracking.
+
+* **Memory-efficient for the required access pattern**
+
+  * If you only need access to the most recently added element, you don't need to maintain random-access operations.
+
+---
+
+## 4. Disadvantages of Stack
+
+* **No efficient random access**
+
+  * You cannot directly access an arbitrary middle element efficiently.
+  * Accessing an element may require popping elements above it.
+
+* **Only the top element is directly accessible.**
+
+* **Stack Overflow**
+
+  * In a fixed-size stack, pushing beyond capacity causes overflow.
+  * Deep recursion can also cause a **call-stack overflow**.
+
+* **Not suitable when you need FIFO behavior**
+
+  * If the oldest element should be processed first, a queue is more appropriate.
+
+* **Searching is inefficient**
+
+  * Searching for an arbitrary element can take **O(n)**.
+
+---
+
+## 5. When should you NOT use a Stack?
+
+Don't use a stack when your problem requires:
+
+### FIFO → Use Queue
+
+If the **first element inserted should be processed first**:
+
+```text
+A → B → C
+
+A comes out first
+```
+
+Use a **Queue**, not a Stack.
+
+Example:
+
+* Printer queue
+* CPU scheduling
+* BFS
+
+---
+
+### Random Access → Use Array/ArrayList
+
+If you frequently need:
+
+```text
+arr[0]
+arr[5]
+arr[100]
+```
+
+a stack is not appropriate.
+
+Use an **array/ArrayList**.
+
+---
+
+### Priority-based processing → Use Heap/Priority Queue
+
+If you need:
+
+> "Process the element with the smallest/largest value first."
+
+Use a **Priority Queue/Heap**, not a normal stack.
+
+Example:
+
+```text
+5, 2, 8, 1
+
+Process 1 first
+```
+
+---
+
+## 6. Complexity
+
+| Operation                |     Time |
+| ------------------------ | -------: |
+| Push                     | **O(1)** |
+| Pop                      | **O(1)** |
+| Peek                     | **O(1)** |
+| isEmpty                  | **O(1)** |
+| Search                   | **O(n)** |
+| Access arbitrary element | **O(n)** |
+
+Space complexity:
+
+> **O(n)** for storing `n` elements.
+
+---
+
+## 7. How to recognize a Stack problem in LeetCode
+
+Look for phrases like:
+
+* **"most recent"**
+* **"last inserted"**
+* **"previous greater/smaller"**
+* **"next greater/smaller"**
+* **"matching brackets"**
+* **"undo"**
+* **"backtracking"**
+* **"nested"**
+* **"process in reverse order"**
+
+Especially:
+
+> **Next Greater Element → Think Monotonic Stack**
+
+> **Valid Parentheses → Think Stack**
+
+> **DFS → Think Stack/Recursion**
+
+---
+
+### ⭐ Best 30-second interview answer
+
+> **"A stack is a linear data structure that follows the LIFO principle, meaning the last element inserted is the first one removed. Insertion and deletion happen only at the top, using operations like push, pop, and peek, which generally take O(1) time. Stacks are useful when we need to process the most recently added element first, such as function calls, recursion, DFS, undo/redo, parenthesis matching, expression evaluation, and monotonic stack problems. However, stacks are not suitable when we need FIFO processing, random access, or priority-based processing; in those cases, we would use a queue, array, or priority queue respectively."**
